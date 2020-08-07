@@ -22,14 +22,24 @@ public class FormalTest {
 	@Test
     public void removeTest() {
 		assertEquals(true, stem.add("Musa", "Non-Vegetarian"));
-		stem.remove("Musa");
-		assertEquals(false, stem.get("Musa"));
         assertEquals(false, stem.add("Musa", "Non-Vegetarian"));
-        assertEquals(true, stem.add("Sri", "Pescatarian"));
-        assertEquals(true, stem.add("Fazil", "Vegetarian"));
-        assertEquals(true, stem.add("Hammad", "Vegan"));
+        stem.remove("Musa");
+        assertEquals(true, stem.add("Musa", "Non-Vegetarian"));
     }
 	
+	@Test
+	public void changeTest() {
+		assertEquals(true, stem.add("Fazil", "Vegetarian"));
+        assertEquals(true, stem.add("Hammad", "Vegan"));
+        assertEquals(true, stem.change("Fazil", "Non-Vegetarian"));
+        assertEquals(true, stem.change("Hammad", "Pescatarian"));
+	}
 	
-
+	@Test
+	public void getTest() {
+		assertEquals(true, stem.add("Musa", "Non-Vegetarian"));
+        assertEquals(true, stem.add("Sri", "Pescatarian"));
+        assertEquals("Non-Vegetarian", stem.get("Musa"));
+        assertEquals("Pescatarian", stem.get("Sri"));
+	}
 }
